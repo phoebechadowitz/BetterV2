@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct LoginScreen: View {
-    @State var username: String = ""
-    @State var password: String = ""
+    @State private var loginVM = LoginViewModel()
 
     var body: some View {
         NavigationView {
             VStack {
-                TextFieldWithLabel(label: "Email", text: $username)
-                TextFieldWithLabel(label: "Password", text: $password)
+                TextField("Emial", text: $loginVM.email)
+                SecureField("Password", text: $loginVM.password)
                 Button("Login") {
-                    // Handle login action
+                    loginVM.login()
                 }
                 NavigationLink(destination: NewAccountScreen()) {
                     Text("Create a new account")
