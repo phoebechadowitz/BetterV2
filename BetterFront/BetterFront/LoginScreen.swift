@@ -21,7 +21,7 @@ struct LoginScreen: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Emial", text: $authService.email)
+                TextField("Email", text: $authService.email)
                 SecureField("Password", text: $authService.password)
                 Button("Login") {
                     authService.login()

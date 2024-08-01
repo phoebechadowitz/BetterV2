@@ -9,16 +9,23 @@ import SwiftUI
 
 
 struct NewAccountScreen: View {
-    @State var username: String = ""
-    @State var password: String = ""
-    @State var passwordReEntry: String = ""
+    @State var userCS = UserCreationService()
+    @State private var errorMessages: [String] = []
+
     var body: some View {
         VStack {
-            TextFieldWithLabel(label: "Email", text: $username)
-            TextFieldWithLabel(label: "Password", text: $password)
-            TextFieldWithLabel(label: "Re-type your password", text: $passwordReEntry)
+            TextField("Email", text: $userCS.email)
+            SecureField("Password", text: $userCS.password)
+            SecureField("Re-Enter your password", text: $userCS.passwordConfirmation)
             Button("Create your Account") {
-                // Handle login action
+                userCS.createUser()
+            }
+            .padding()
+            if !userCS.errorMessages.isEmpty {
+                VStack(alignment: .leading) {
+                        Text(userCS.errorMessages)
+                }
+                .padding()
             }
         }
         .padding()
