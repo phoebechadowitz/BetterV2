@@ -23,7 +23,7 @@ struct NewAccountScreen: View {
             .padding()
             if !userCS.errorMessages.isEmpty {
                 VStack(alignment: .leading) {
-                        Text(userCS.errorMessages)
+                        Text(userCS.errorMessages).foregroundColor(.red)
                 }
                 .padding()
             }

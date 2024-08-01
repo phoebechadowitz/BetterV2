@@ -9,42 +9,54 @@ import SwiftUI
 
 struct LoginScreen: View {
     
-    @Bindable private var authService: AuthenticationService
-    @State var identityService: IdentityService
+    @Bindable private var authService = AuthenticationService(identityService: IdentityService.shared)
+    @State private var identityService = IdentityService.shared
 
-    init(identityService: IdentityService) {
-        self.identityService = identityService
-        self.authService = AuthenticationService(identityService: identityService)
-        }
+    
 
 
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Email", text: $authService.email)
-                SecureField("Password", text: $authService.password)
-                Button("Login") {
-                    authService.login()
+                if !authService.errorMessages.isEmpty {
+                    VStack(alignment: .leading) {
+                        Text(authService.errorMessages).foregroundColor(.red)
+                    }
+                    .padding()
+                }
+                
+                if !identityService.authenticated {
+                    TextField("Email", text: $authService.email)
+                    SecureField("Password", text: $authService.password)
+                    Button("Login") {
+                        authService.login()
+                    }
+                    NavigationLink(destination: NewAccountScreen()) {
+                        Text("Create a new account")
+                    }
+                }
+                else {
+                    Button("Logout") {
+                        identityService.removeIdentificationFromKeychain()
+                        print("identity serv: " + identityService.token)
+                    }
                 }
                 Button("print keychain") {
                     print(KeychainService.getToken(forKey: "jwToken") ?? "no token found in keychain")
                     print("identity serv:")
                     print(identityService.token)
                 }
-                Button("Logout") {
-                    identityService.removeIdentificationFromKeychain()
-                    print("identity serv:")
-                }
-                NavigationLink(destination: NewAccountScreen()) {
-                    Text("Create a new account")
-                }
+                
+                
             }
             .padding()
-            .navigationBarTitle("Login")
+            .navigationBarTitle(identityService.authenticated ? "Welcome \(identityService.email)" : "Login"
+                                
+)
         }
     }
 }
 
 #Preview {
-    LoginScreen(identityService: IdentityService())
+    LoginScreen()
 }

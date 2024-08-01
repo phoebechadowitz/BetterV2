@@ -24,8 +24,8 @@ struct LoginRequestBody: Codable {
 
 struct LoginResponseBody: Codable {
     let token: String?
-    let message: String?
-    let success: Bool?
+    let email: String?
+    let error: String?
 }
 
 
@@ -60,7 +60,7 @@ struct UserResponseError: Codable {
 
 class Webservice {
     
-    func login(email: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Result<[String], AuthenticationError>) -> Void) {
         
         guard let url = URL(string: "http://localhost:3000/login") else {
             completion(.failure(.custom(errorMessage: "URL is incorrect")))
@@ -84,11 +84,20 @@ class Webservice {
                 completion(.failure(.invalidCredentials))
                 return
             }
+            if let error = loginResponse.error {
+                completion(.failure(.custom(errorMessage: error)))
+                return
+            }
             guard let token = loginResponse.token else {
                 completion(.failure(.invalidCredentials))
                 return
             }
-            completion(.success(token))
+            guard let email = loginResponse.email else {
+                completion(.failure(.invalidCredentials))
+                return
+            }
+            
+            completion(.success([email, token]))
             
         }.resume()
     }

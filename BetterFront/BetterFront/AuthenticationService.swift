@@ -8,9 +8,10 @@
 import Foundation
 @Observable
 class AuthenticationService {
-    var identityService: IdentityService
+    private var identityService = IdentityService.shared
     var email: String = ""
     var password: String = ""
+    var errorMessages: String = ""
     
     init(identityService: IdentityService) {
         self.identityService = identityService
@@ -18,12 +19,19 @@ class AuthenticationService {
     func login () {
         Webservice().login(email: email, password: password) { result in
             switch result {
-                case .success(let token):
-                    print(self.identityService.authenticated)
-                    self.identityService.setIdentification(identityToken: token, identityEmail: self.email)
-                case . failure(let error):
-                    print(error.localizedDescription)
+            case .success(let returnArray):
+                print(self.identityService.authenticated)
+                self.identityService.setIdentification(identityToken: returnArray[1], identityEmail: returnArray[0])
+            case .failure(let error):
+                switch error {
+                case .custom(let errorMessage):
+                    self.errorMessages = errorMessage
+                    print(self.errorMessages)
+                default:
+                    self.errorMessages = "An unknown error occurred"
+                }
             }
         }
     }
 }
+

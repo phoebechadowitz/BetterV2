@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct BetterFrontApp: App {
-    @State var identityService = IdentityService()
+    @State private var identityService = IdentityService.shared
     init() {
         self.identityService.loadIdentificationFromKeychain()
-    }
+        }
     var body: some Scene {
         WindowGroup {
-            LoginScreen(identityService: self.identityService)
+            LoginScreen()
         }
     }
 }

@@ -16,11 +16,11 @@ class KeychainService {
         case unknown(OSStatus)
     }
     
-    static func storeToken(token: String) throws {
+    static func storeToken(token: String, forKey key: String) throws {
         if let data = token.data(using: .utf8) {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
-                kSecAttrAccount as String: "jwToken",
+                kSecAttrAccount as String: key,
                 kSecValueData as String: data,
                 kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked
             ]

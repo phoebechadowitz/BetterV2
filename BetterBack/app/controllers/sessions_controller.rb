@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
       @decoded_token = JWT.decode @token, hmac_secret, true, { algorithm: 'HS256' }
       
       if (@token)
-        render json: { token: @token, decoded_token: @decoded_token }
+        render json: { token: @token, email: email.downcase }
       else
-        render json: {error: "error"}
+        render json: {error: "Internal server error, please try again"}
       end
     else
-      render json: {error: "error"}
+      render json: {error: "User could not be found. Make sure you entered the correct email and password"}
     end
   end
 end
