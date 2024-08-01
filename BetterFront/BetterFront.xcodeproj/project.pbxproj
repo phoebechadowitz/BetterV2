@@ -14,7 +14,9 @@
 		C638596A2C447F6B003DB037 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63859692C447F6B003DB037 /* LoginScreen.swift */; };
 		C638596C2C4480BF003DB037 /* NewAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638596B2C4480BF003DB037 /* NewAccountScreen.swift */; };
 		C66ABCC22C5AD7C80036B391 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC12C5AD7C80036B391 /* Webservice.swift */; };
-		C66ABCC42C5ADA910036B391 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC32C5ADA910036B391 /* LoginViewModel.swift */; };
+		C66ABCC42C5ADA910036B391 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */; };
+		C66ABCC62C5BE4450036B391 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC52C5BE4450036B391 /* KeychainService.swift */; };
+		C66ABCC82C5BEA8A0036B391 /* IdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +29,9 @@
 		C63859692C447F6B003DB037 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C638596B2C4480BF003DB037 /* NewAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountScreen.swift; sourceTree = "<group>"; };
 		C66ABCC12C5AD7C80036B391 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
-		C66ABCC32C5ADA910036B391 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		C66ABCC52C5BE4450036B391 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +72,9 @@
 				C63859692C447F6B003DB037 /* LoginScreen.swift */,
 				C638596B2C4480BF003DB037 /* NewAccountScreen.swift */,
 				C66ABCC12C5AD7C80036B391 /* Webservice.swift */,
-				C66ABCC32C5ADA910036B391 /* LoginViewModel.swift */,
+				C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */,
+				C66ABCC52C5BE4450036B391 /* KeychainService.swift */,
+				C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */,
 			);
 			path = BetterFront;
 			sourceTree = "<group>";
@@ -161,8 +167,10 @@
 			files = (
 				C638596A2C447F6B003DB037 /* LoginScreen.swift in Sources */,
 				C63859552C447EA9003DB037 /* BetterFrontApp.swift in Sources */,
-				C66ABCC42C5ADA910036B391 /* LoginViewModel.swift in Sources */,
+				C66ABCC42C5ADA910036B391 /* AuthenticationService.swift in Sources */,
+				C66ABCC82C5BEA8A0036B391 /* IdentityService.swift in Sources */,
 				C638596C2C4480BF003DB037 /* NewAccountScreen.swift in Sources */,
+				C66ABCC62C5BE4450036B391 /* KeychainService.swift in Sources */,
 				C66ABCC22C5AD7C80036B391 /* Webservice.swift in Sources */,
 				C63859682C447F42003DB037 /* TextFieldWithLabel.swift in Sources */,
 			);

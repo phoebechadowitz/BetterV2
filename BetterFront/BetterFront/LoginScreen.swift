@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct LoginScreen: View {
-    @State private var loginVM = LoginViewModel()
+    
+    @Bindable private var authService: AuthenticationService
+    @State var identityService: IdentityService
+
+    init(identityService: IdentityService) {
+        self.identityService = identityService
+        self.authService = AuthenticationService(identityService: identityService)
+        }
+
 
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Emial", text: $loginVM.email)
-                SecureField("Password", text: $loginVM.password)
+                TextField("Emial", text: $authService.email)
+                SecureField("Password", text: $authService.password)
                 Button("Login") {
-                    loginVM.login()
+                    authService.login()
+                }
+                Button("print keychain") {
+                    print(KeychainService.getToken(forKey: "jwToken") ?? "no token found in keychain")
+                    print("identity serv:")
+                    print(identityService.token)
+                }
+                Button("Logout") {
+                    identityService.removeIdentificationFromKeychain()
+                    print("identity serv:")
                 }
                 NavigationLink(destination: NewAccountScreen()) {
                     Text("Create a new account")
@@ -29,5 +46,5 @@ struct LoginScreen: View {
 }
 
 #Preview {
-    LoginScreen()
+    LoginScreen(identityService: IdentityService())
 }
