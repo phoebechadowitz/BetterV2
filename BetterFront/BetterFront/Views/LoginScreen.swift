@@ -34,15 +34,21 @@ struct LoginScreen: View {
                     NavigationLink(destination: NewAccountScreen()) {
                         Text("Create a new account")
                     }
+                    NavigationLink(destination: NewAccountScreen()) {
+                        Text("Create a new account")
+                    }
+
                 }
                 else {
                     Button("Logout") {
                         identityService.removeIdentificationFromKeychain()
                         print("identity serv: " + identityService.token)
                     }
+                    
+                    Text(KeychainService.getToken(forKey: "jwToken") ?? "no token found in keychain")
                 }
                 Button("print keychain") {
-                    print(KeychainService.getToken(forKey: "jwToken") ?? "no token found in keychain")
+                    
                     print("identity serv:")
                     print(identityService.token)
                 }
