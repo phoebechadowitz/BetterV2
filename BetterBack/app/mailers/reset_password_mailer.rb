@@ -7,9 +7,9 @@ class ResetPasswordMailer < ApplicationMailer
         payload = { email: @user, expiration_date: expiration_date}
 
         hmac_secret = ENV['FORGOT_PASS_KEY']
-
         token = JWT.encode(payload, hmac_secret, 'HS256')
-        linkable_token = token.tr('.', '_')
+        Rails.logger.debug "Token: #{token}"
+        linkable_token = token.tr('.', '~')
         @url = new_password_url(linkable_token)
         mail(to: @user, subject: 'Reset your Better password!')
     end

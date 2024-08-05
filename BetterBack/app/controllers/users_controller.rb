@@ -96,7 +96,7 @@ class UsersController < ApplicationController
     def decode_password_token
       @linkable_token = params[:token]
       hmac_secret = ENV['FORGOT_PASS_KEY']
-      unlinked_token = @linkable_token.tr('_', '.')
+      unlinked_token = @linkable_token.tr('~', '.')
       decoded_token = JWT.decode unlinked_token, hmac_secret, true, { algorithm: 'HS256' }
       payload = decoded_token.first
       expiration_date_str = payload['expiration_date']
