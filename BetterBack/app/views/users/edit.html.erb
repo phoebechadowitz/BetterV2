@@ -1,4 +1,5 @@
-<%= form_with(model: @user, url: reset_password_user_path(@user.id), local: true) do |form| %>
+<%= @user.email %>
+<%= form_with(model: @user, url: update_password_path(@linkable_token), local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>

@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :users do
-    member do
-      patch :reset_password
-    end
-  end
-  get 'user/reset/:token', to: 'users#edit', as: 'reset_password'
-
+  resources :users
+  get 'user/reset/:token', to: 'users#edit_password', as: 'new_password'
+  patch 'user/reset/:token', to: 'users#reset_password', as: 'update_password'
+  post 'forgot_password', to: 'users#forgot_password'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

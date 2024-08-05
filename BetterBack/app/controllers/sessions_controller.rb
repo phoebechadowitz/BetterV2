@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   require 'jwt'
+ skip_before_action :verify_authenticity_token
 
   def create
     email = params[:email]
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       payload = { username: user.email }
 
       # The secret must be a string. A JWT::DecodeError will be raised if it isn't provided.
-      hmac_secret = 'my$ecretK3y'
+      hmac_secret = ENV['JWT_KEY']
 
       @token = JWT.encode payload, hmac_secret, 'HS256'
       @decoded_token = JWT.decode @token, hmac_secret, true, { algorithm: 'HS256' }
