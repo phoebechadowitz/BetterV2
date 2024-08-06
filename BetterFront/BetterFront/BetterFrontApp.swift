@@ -10,13 +10,14 @@ import SwiftUI
 @main
 struct BetterFrontApp: App {
     @State private var identityService = IdentityService.shared
+    
     init() {
         self.identityService.loadIdentificationFromKeychain()
-        }
+    }
     var body: some Scene {
         WindowGroup {
             if identityService.authenticated {
-                HomeScreen()
+                TabContainer()
             }
             else {
                 LoginScreen()

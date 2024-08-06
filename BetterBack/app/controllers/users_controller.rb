@@ -50,10 +50,10 @@ class UsersController < ApplicationController
     user = User.find_by(email: email)
 
     if user.nil?
-      render json: { message: "No user was found with that email" }, status: :not_found
+      render json: { error: "No user found with that email" }, status: :not_found
     else
       ResetPasswordMailer.reset_password(email).deliver_now
-      render json: { message: "Password reset instructions have been sent to #{email}" }, status: :ok
+      render json: { message: "Sent!" }, status: :ok
     end
   end
 

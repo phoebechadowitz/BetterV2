@@ -1,0 +1,2 @@
+module UserBetsHelper
+end

@@ -67,6 +67,7 @@ struct ForgotPasswordBody: Codable {
 }
 struct ForgotPasswordResponse: Codable {
     let message: String?
+    let error: String?
 }
 
 class AuthAPI {
@@ -169,10 +170,6 @@ class AuthAPI {
         request.httpBody = try? JSONEncoder().encode(body)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                        completion(.failure(.custom(errorMessage: "Invalid response from server")))
-                        return
-                    }
 
             guard let data = data else {
                 completion(.failure(.custom(errorMessage: "No data found")))
@@ -183,12 +180,12 @@ class AuthAPI {
                 return
             }
             
-            if httpResponse.statusCode == 200 {
-                completion(.success(passwordResponse.message ?? ""))
+            if let successResponse = passwordResponse.message {
+                completion(.success(successResponse))
             }
             else
             {
-                completion(.failure(.custom(errorMessage: passwordResponse.message ?? "")))
+                completion(.failure(.custom(errorMessage: passwordResponse.error ?? "")))
             }
         }.resume()
     }

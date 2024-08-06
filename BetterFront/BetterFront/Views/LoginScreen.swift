@@ -41,10 +41,25 @@ struct LoginScreen: View {
                         .padding()
                     }
                     
-                    TextField("Email", text: $authService.email)
-                        .textFieldStyle(.roundedBorder)
-                    SecureField("Password", text: $authService.password)
-                        .textFieldStyle(.roundedBorder)
+                    HStack {
+                        Image(systemName: "envelope")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.mint)
+                        TextField("Email", text: $authService.email)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    HStack {
+                        Image(systemName: "lock.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.mint)
+
+                        SecureField("Password", text: $authService.password)
+                            .textFieldStyle(.roundedBorder)
+                    }
                     HStack {
                         Spacer()
                         NavigationLink(destination: ForgotPassEmailScreen()) {
@@ -77,6 +92,7 @@ struct LoginScreen: View {
                 .padding()
             }
         }
+        .tint(.white)
     }
 }
 

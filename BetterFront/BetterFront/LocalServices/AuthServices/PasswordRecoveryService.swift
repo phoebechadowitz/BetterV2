@@ -9,7 +9,8 @@ import Foundation
 @Observable
 class PasswordRecoveryService {
     var email: String = ""
-    var message: String = ""
+    var message: String?
+    var error: String?
     
     func sendRecoveryEmail() {
         AuthAPI().sendRecoveryEmail(email: self.email) { result in
@@ -19,9 +20,9 @@ class PasswordRecoveryService {
             case .failure(let error):
                 switch error {
                 case .custom(let errorMessage):
-                    self.message = errorMessage
+                    self.error = errorMessage
                 default:
-                    self.message = "An unknown error occurred"
+                    self.error = "An unknown error occurred"
                 }
             }
         }

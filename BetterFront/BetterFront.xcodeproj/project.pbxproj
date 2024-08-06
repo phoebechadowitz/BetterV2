@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C62D39192C62C3D300614742 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62D39182C62C3D300614742 /* TabContainer.swift */; };
+		C62D391B2C62CB4000614742 /* CreateBetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62D391A2C62CB4000614742 /* CreateBetView.swift */; };
+		C62D391D2C62CB8300614742 /* BetCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62D391C2C62CB8300614742 /* BetCreationService.swift */; };
+		C62D391F2C62D90800614742 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62D391E2C62D90800614742 /* Webservice.swift */; };
 		C63859552C447EA9003DB037 /* BetterFrontApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63859542C447EA9003DB037 /* BetterFrontApp.swift */; };
 		C63859592C447EAA003DB037 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63859582C447EAA003DB037 /* Assets.xcassets */; };
 		C638595D2C447EAA003DB037 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C638595C2C447EAA003DB037 /* Preview Assets.xcassets */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C62D39182C62C3D300614742 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
+		C62D391A2C62CB4000614742 /* CreateBetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBetView.swift; sourceTree = "<group>"; };
+		C62D391C2C62CB8300614742 /* BetCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetCreationService.swift; sourceTree = "<group>"; };
+		C62D391E2C62D90800614742 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		C63859512C447EA9003DB037 /* BetterFront.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterFront.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63859542C447EA9003DB037 /* BetterFrontApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterFrontApp.swift; sourceTree = "<group>"; };
 		C63859582C447EAA003DB037 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 				C63859582C447EAA003DB037 /* Assets.xcassets */,
 				C638595A2C447EAA003DB037 /* BetterFront.entitlements */,
 				C638595B2C447EAA003DB037 /* Preview Content */,
+				C62D391C2C62CB8300614742 /* BetCreationService.swift */,
 			);
 			path = BetterFront;
 			sourceTree = "<group>";
@@ -107,6 +116,8 @@
 				C638596B2C4480BF003DB037 /* NewAccountScreen.swift */,
 				C66ABCCB2C5D409C0036B391 /* ForgotPassEmailScreen.swift */,
 				C66ABCD52C62726A0036B391 /* HomeScreen.swift */,
+				C62D39182C62C3D300614742 /* TabContainer.swift */,
+				C62D391A2C62CB4000614742 /* CreateBetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				C66ABCC12C5AD7C80036B391 /* AuthAPI.swift */,
+				C62D391E2C62D90800614742 /* Webservice.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -215,12 +227,16 @@
 				C66ABCC42C5ADA910036B391 /* AuthenticationService.swift in Sources */,
 				C66ABCCC2C5D409C0036B391 /* ForgotPassEmailScreen.swift in Sources */,
 				C66ABCC82C5BEA8A0036B391 /* IdentityService.swift in Sources */,
+				C62D391B2C62CB4000614742 /* CreateBetView.swift in Sources */,
 				C638596C2C4480BF003DB037 /* NewAccountScreen.swift in Sources */,
 				C66ABCC62C5BE4450036B391 /* KeychainService.swift in Sources */,
 				C66ABCD62C62726A0036B391 /* HomeScreen.swift in Sources */,
+				C62D391F2C62D90800614742 /* Webservice.swift in Sources */,
+				C62D39192C62C3D300614742 /* TabContainer.swift in Sources */,
 				C66ABCC22C5AD7C80036B391 /* AuthAPI.swift in Sources */,
 				C66ABCCA2C5C261D0036B391 /* UserCreationService.swift in Sources */,
 				C63859682C447F42003DB037 /* TextFieldWithLabel.swift in Sources */,
+				C62D391D2C62CB8300614742 /* BetCreationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

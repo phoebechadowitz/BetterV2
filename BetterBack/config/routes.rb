@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_bets
+  resources :bets
   resources :users
   get 'user/reset/:token', to: 'users#edit_password', as: 'new_password'
   patch 'user/reset/:token', to: 'users#reset_password', as: 'update_password'
