@@ -20,8 +20,9 @@ class UsersController < ApplicationController
   def create
     email = params[:user][:email].downcase
     password = params[:user][:password]
-    confirmation = params[:user][:confirmation]
-    @user = User.new(email: email, password: password, password_confirmation: confirmation)
+    password_confirmation = params[:user][:password_confirmation]
+
+    @user = User.new(email: email, password: password, password_confirmation: password_confirmation)
 
     if @user.save
       render json: @user, status: :created, location: @user

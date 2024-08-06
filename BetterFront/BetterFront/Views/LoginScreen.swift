@@ -11,54 +11,71 @@ struct LoginScreen: View {
     
     @Bindable private var authService = AuthenticationService(identityService: IdentityService.shared)
     @State private var identityService = IdentityService.shared
-
     
-
-
     var body: some View {
         NavigationView {
-            VStack {
-                if !authService.errorMessages.isEmpty {
-                    VStack(alignment: .leading) {
-                        Text(authService.errorMessages).foregroundColor(.red)
-                    }
-                    .padding()
+            ZStack {
+                VStack {
+                    Color.mint // Change this to your desired color
+                        .edgesIgnoringSafeArea(.top)
+                        .frame(height: 250) // Adjust the height as needed
+                        .overlay(
+                            VStack {
+                                Spacer()
+                                Text("Better.")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }
+                        )
+                    Spacer()
                 }
                 
-                if !identityService.authenticated {
+                VStack {
+                    Spacer()
+                    if !authService.errorMessages.isEmpty {
+                        VStack(alignment: .leading) {
+                            Text(authService.errorMessages).foregroundColor(.red)
+                        }
+                        .padding()
+                    }
+                    
                     TextField("Email", text: $authService.email)
+                        .textFieldStyle(.roundedBorder)
                     SecureField("Password", text: $authService.password)
-                    Button("Login") {
+                        .textFieldStyle(.roundedBorder)
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: ForgotPassEmailScreen()) {
+                            Text("Forgot password?")
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.mint)
+                        }
+                    }
+                    Button(action: {
                         authService.login()
+                    }) {
+                        Text("Login")
+                            .fontWeight(.bold)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .foregroundStyle(Color.white)
+                            .background(Color.mint)
+                            .cornerRadius(10)
                     }
-                    NavigationLink(destination: NewAccountScreen()) {
-                        Text("Create a new account")
+                    Spacer()
+                    HStack {
+                        Text("Dont have an account?")
+                        NavigationLink(destination: NewAccountScreen()) {
+                            Text("Sign up!")
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.mint)
+                        }
                     }
-                    NavigationLink(destination: NewAccountScreen()) {
-                        Text("Create a new account")
-                    }
-
                 }
-                else {
-                    Button("Logout") {
-                        identityService.removeIdentificationFromKeychain()
-                        print("identity serv: " + identityService.token)
-                    }
-                    
-                    Text(KeychainService.getToken(forKey: "jwToken") ?? "no token found in keychain")
-                }
-                Button("print keychain") {
-                    
-                    print("identity serv:")
-                    print(identityService.token)
-                }
-                
-                
+                .padding()
             }
-            .padding()
-            .navigationBarTitle(identityService.authenticated ? "Welcome \(identityService.email)" : "Login"
-                                
-)
         }
     }
 }

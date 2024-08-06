@@ -16,7 +16,7 @@ class UserCreationService {
     
 
     func createUser() {
-        Webservice().createUser(email: email, password: password, passwordConfirmation: passwordConfirmation) { result in
+        AuthAPI().createUser(email: email, password: password, passwordConfirmation: passwordConfirmation) { result in
             switch result {
             case .success(let message):
                 self.errorMessages = message

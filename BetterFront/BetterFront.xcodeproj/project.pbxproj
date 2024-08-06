@@ -13,11 +13,14 @@
 		C63859682C447F42003DB037 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63859672C447F42003DB037 /* TextFieldWithLabel.swift */; };
 		C638596A2C447F6B003DB037 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63859692C447F6B003DB037 /* LoginScreen.swift */; };
 		C638596C2C4480BF003DB037 /* NewAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638596B2C4480BF003DB037 /* NewAccountScreen.swift */; };
-		C66ABCC22C5AD7C80036B391 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC12C5AD7C80036B391 /* Webservice.swift */; };
+		C66ABCC22C5AD7C80036B391 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC12C5AD7C80036B391 /* AuthAPI.swift */; };
 		C66ABCC42C5ADA910036B391 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */; };
 		C66ABCC62C5BE4450036B391 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC52C5BE4450036B391 /* KeychainService.swift */; };
 		C66ABCC82C5BEA8A0036B391 /* IdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */; };
 		C66ABCCA2C5C261D0036B391 /* UserCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCC92C5C261D0036B391 /* UserCreationService.swift */; };
+		C66ABCCC2C5D409C0036B391 /* ForgotPassEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCCB2C5D409C0036B391 /* ForgotPassEmailScreen.swift */; };
+		C66ABCD02C5D42860036B391 /* PasswordRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCCF2C5D42860036B391 /* PasswordRecoveryService.swift */; };
+		C66ABCD62C62726A0036B391 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66ABCD52C62726A0036B391 /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +32,14 @@
 		C63859672C447F42003DB037 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 		C63859692C447F6B003DB037 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C638596B2C4480BF003DB037 /* NewAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountScreen.swift; sourceTree = "<group>"; };
-		C66ABCC12C5AD7C80036B391 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		C66ABCC12C5AD7C80036B391 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C66ABCC52C5BE4450036B391 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityService.swift; sourceTree = "<group>"; };
 		C66ABCC92C5C261D0036B391 /* UserCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationService.swift; sourceTree = "<group>"; };
+		C66ABCCB2C5D409C0036B391 /* ForgotPassEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassEmailScreen.swift; sourceTree = "<group>"; };
+		C66ABCCF2C5D42860036B391 /* PasswordRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryService.swift; sourceTree = "<group>"; };
+		C66ABCD52C62726A0036B391 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +72,14 @@
 		C63859532C447EA9003DB037 /* BetterFront */ = {
 			isa = PBXGroup;
 			children = (
+				C66ABCD32C6272210036B391 /* API */,
+				C66ABCD22C62717F0036B391 /* LocalServices */,
+				C66ABCCE2C5D41A40036B391 /* Views */,
 				C63859642C447EDB003DB037 /* Widgets */,
 				C63859542C447EA9003DB037 /* BetterFrontApp.swift */,
 				C63859582C447EAA003DB037 /* Assets.xcassets */,
 				C638595A2C447EAA003DB037 /* BetterFront.entitlements */,
 				C638595B2C447EAA003DB037 /* Preview Content */,
-				C63859692C447F6B003DB037 /* LoginScreen.swift */,
-				C638596B2C4480BF003DB037 /* NewAccountScreen.swift */,
-				C66ABCC12C5AD7C80036B391 /* Webservice.swift */,
-				C66ABCC92C5C261D0036B391 /* UserCreationService.swift */,
-				C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */,
-				C66ABCC52C5BE4450036B391 /* KeychainService.swift */,
-				C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */,
 			);
 			path = BetterFront;
 			sourceTree = "<group>";
@@ -96,6 +98,45 @@
 				C63859672C447F42003DB037 /* TextFieldWithLabel.swift */,
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		C66ABCCE2C5D41A40036B391 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C63859692C447F6B003DB037 /* LoginScreen.swift */,
+				C638596B2C4480BF003DB037 /* NewAccountScreen.swift */,
+				C66ABCCB2C5D409C0036B391 /* ForgotPassEmailScreen.swift */,
+				C66ABCD52C62726A0036B391 /* HomeScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C66ABCD22C62717F0036B391 /* LocalServices */ = {
+			isa = PBXGroup;
+			children = (
+				C66ABCD42C6272340036B391 /* AuthServices */,
+			);
+			path = LocalServices;
+			sourceTree = "<group>";
+		};
+		C66ABCD32C6272210036B391 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C66ABCC12C5AD7C80036B391 /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C66ABCD42C6272340036B391 /* AuthServices */ = {
+			isa = PBXGroup;
+			children = (
+				C66ABCC92C5C261D0036B391 /* UserCreationService.swift */,
+				C66ABCC52C5BE4450036B391 /* KeychainService.swift */,
+				C66ABCC32C5ADA910036B391 /* AuthenticationService.swift */,
+				C66ABCC72C5BEA8A0036B391 /* IdentityService.swift */,
+				C66ABCCF2C5D42860036B391 /* PasswordRecoveryService.swift */,
+			);
+			path = AuthServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,13 +209,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66ABCD02C5D42860036B391 /* PasswordRecoveryService.swift in Sources */,
 				C638596A2C447F6B003DB037 /* LoginScreen.swift in Sources */,
 				C63859552C447EA9003DB037 /* BetterFrontApp.swift in Sources */,
 				C66ABCC42C5ADA910036B391 /* AuthenticationService.swift in Sources */,
+				C66ABCCC2C5D409C0036B391 /* ForgotPassEmailScreen.swift in Sources */,
 				C66ABCC82C5BEA8A0036B391 /* IdentityService.swift in Sources */,
 				C638596C2C4480BF003DB037 /* NewAccountScreen.swift in Sources */,
 				C66ABCC62C5BE4450036B391 /* KeychainService.swift in Sources */,
-				C66ABCC22C5AD7C80036B391 /* Webservice.swift in Sources */,
+				C66ABCD62C62726A0036B391 /* HomeScreen.swift in Sources */,
+				C66ABCC22C5AD7C80036B391 /* AuthAPI.swift in Sources */,
 				C66ABCCA2C5C261D0036B391 /* UserCreationService.swift in Sources */,
 				C63859682C447F42003DB037 /* TextFieldWithLabel.swift in Sources */,
 			);

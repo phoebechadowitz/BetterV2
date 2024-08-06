@@ -15,7 +15,12 @@ struct BetterFrontApp: App {
         }
     var body: some Scene {
         WindowGroup {
-            LoginScreen()
+            if identityService.authenticated {
+                HomeScreen()
+            }
+            else {
+                LoginScreen()
+            }
         }
     }
 }

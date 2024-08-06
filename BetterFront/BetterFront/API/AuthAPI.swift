@@ -17,6 +17,11 @@ enum UserCreationError: Error {
     case custom(errorMessage: String)
 }
 
+enum RecoveryError: Error {
+    case noUserFound
+    case custom(errorMessage: String)
+}
+
 struct LoginRequestBody: Codable {
     let email: String
     let password: String
@@ -27,7 +32,6 @@ struct LoginResponseBody: Codable {
     let email: String?
     let error: String?
 }
-
 
 struct UserCreationBody: Codable {
     let email: String
@@ -58,7 +62,14 @@ struct UserResponseError: Codable {
 
 }
 
-class Webservice {
+struct ForgotPasswordBody: Codable {
+    let email: String
+}
+struct ForgotPasswordResponse: Codable {
+    let message: String?
+}
+
+class AuthAPI {
     
     func login(email: String, password: String, completion: @escaping (Result<[String], AuthenticationError>) -> Void) {
         
@@ -127,18 +138,58 @@ class Webservice {
             }
             var allMessages: [String] = []
             if let passwordConfirmationMessages = creationError.passwordConfirmation {
-                allMessages.append("Password Confirmation:")
-                allMessages.append(contentsOf: passwordConfirmationMessages)
+                allMessages.append("Password confirmation " + (passwordConfirmationMessages.first ?? ""))
+//                allMessages.append("Password Confirmation:")
+//                allMessages.append(contentsOf: passwordConfirmationMessages)
             }
             if let emailMessages = creationError.email {
-                allMessages.append("Email:")
-                allMessages.append(contentsOf: emailMessages)
+                allMessages.append("Email " + (emailMessages.first ?? ""))
+//                allMessages.append("Email:")
+//                allMessages.append(contentsOf: emailMessages)
             }
             if let passwordMessages = creationError.password {
-                allMessages.append("Password:")
-                allMessages.append(contentsOf: passwordMessages)
+                allMessages.append("Password " + (passwordMessages.first ?? ""))
+//                allMessages.append("Password:")
+//                allMessages.append(contentsOf: passwordMessages)
             }
             completion(.failure(.custom(errorMessage: allMessages.joined(separator: "\n"))))
+        }.resume()
+    }
+    
+    func sendRecoveryEmail(email: String, completion: @escaping (Result<String, RecoveryError>) -> Void) {
+        guard let url = URL(string: "http://localhost:3000/forgot_password") else {
+            completion(.failure(.custom(errorMessage: "URL is incorrect")))
+            return
+        }
+        let body = ForgotPasswordBody(email: email)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let httpResponse = response as? HTTPURLResponse else {
+                        completion(.failure(.custom(errorMessage: "Invalid response from server")))
+                        return
+                    }
+
+            guard let data = data else {
+                completion(.failure(.custom(errorMessage: "No data found")))
+                return
+            }
+            guard let passwordResponse = try? JSONDecoder().decode(ForgotPasswordResponse.self, from: data) else {
+                    completion(.failure(.noUserFound))
+                return
+            }
+            
+            if httpResponse.statusCode == 200 {
+                completion(.success(passwordResponse.message ?? ""))
+            }
+            else
+            {
+                completion(.failure(.custom(errorMessage: passwordResponse.message ?? "")))
+            }
         }.resume()
     }
 }

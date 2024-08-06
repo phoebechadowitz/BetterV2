@@ -17,6 +17,7 @@ class IdentityService {
         email = identityEmail
         token = identityToken
         authenticated = true
+        print(email + token)
         storeIdentificationInKeychain()
     }
     

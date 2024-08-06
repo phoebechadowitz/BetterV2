@@ -17,7 +17,7 @@ class AuthenticationService {
         self.identityService = identityService
     }
     func login () {
-        Webservice().login(email: email, password: password) { result in
+        AuthAPI().login(email: email, password: password) { result in
             switch result {
             case .success(let returnArray):
                 print(self.identityService.authenticated)
